@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DFFFEB6D-CFE6-4414-92A0-BE08E87B3B72</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>90AFDA760509439BB5B4F6F535E6753B50B6903C</key>
+		<string>https://github.com/PureMVC/puremvc-cpp-multicore-framework.git</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>90AFDA760509439BB5B4F6F535E6753B50B6903C</key>
+		<string>puremvc-cpp-multicore-framework/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/PureMVC/puremvc-cpp-multicore-framework.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>90AFDA760509439BB5B4F6F535E6753B50B6903C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>90AFDA760509439BB5B4F6F535E6753B50B6903C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>puremvc-cpp-multicore-framework</string>
+		</dict>
+	</array>
+</dict>
+</plist>
