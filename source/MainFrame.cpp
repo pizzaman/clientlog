@@ -28,7 +28,8 @@ MainFrame::MainFrame(const wxString &title,wxSize &size)
 : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition,size)
 {
     createMenu();
-    FileUtil::readIniFile(wxT("Resources/config/init.ini"));
+    ConfigFileUtil::getInstance();
+//    FileUtil::readIniFile(wxT("Resources/config/init.ini"));
     
     wxPuts(wxT("a test widgets console"));
     

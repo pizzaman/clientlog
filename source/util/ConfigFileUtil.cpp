@@ -7,10 +7,11 @@
 //
 
 #include "ConfigFileUtil.h"
-#include <wx/file.h>
-#include <wx/stdpaths.h>
-#include <wx/filename.h>
-#include <wx/fileconf.h>
+#include "wx/file.h"
+#include "wx/stdpaths.h"
+#include "wx/filename.h"
+#include "wx/fileconf.h"
+#include "wx/wfstream.h"
 
 ConfigFileUtil::ConfigFileUtil()
 {
@@ -20,6 +21,36 @@ ConfigFileUtil::ConfigFileUtil()
 ConfigFileUtil::~ConfigFileUtil()
 {
     
+}
+
+
+ConfigFileUtil* ConfigFileUtil::m_instance = NULL;
+
+ConfigFileUtil* ConfigFileUtil::getInstance()
+{
+    if(!m_instance)
+    {
+        m_instance = new ConfigFileUtil;
+        m_instance->init();
+    }
+    return m_instance;
+}
+
+void ConfigFileUtil::init()
+{
+    wxFileInputStream is(FileUtil::getResourcePath()+"Resources/config/config.ini");
+    wxFileConfig* config = new wxFileConfig(is);
+    wxConfigBase::Set(config);
+}
+
+void ConfigFileUtil::setPort(int value)
+{
+    this->port = value;
+}
+
+int ConfigFileUtil::getPort()
+{
+    return this->port;
 }
 
 void ConfigFileUtil::syncLoadConfig(wxString fileName, configType wxConfigIniFile)

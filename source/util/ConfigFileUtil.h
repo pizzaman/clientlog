@@ -20,9 +20,17 @@ enum configType{
 class ConfigFileUtil
 {
 public:
-    ConfigFileUtil();
     ~ConfigFileUtil();
+    static ConfigFileUtil* getInstance();
+    void init();
     void syncLoadConfig(wxString fileName, configType wxConfigIniFile);
+    int getPort();
+    void setPort(int value);
+private:
+    ConfigFileUtil();
+    static ConfigFileUtil *m_instance;
+    wxString language;
+    int port;
 };
 
 

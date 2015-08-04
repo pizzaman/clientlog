@@ -24,7 +24,7 @@ PSocketServer::PSocketServer(wxWindow *parent, const  wxWindowID id,const wxPoin
 
 PSocketServer::~PSocketServer()
 {
-    
+    this->stop();
 }
 
 void PSocketServer::start()
@@ -33,15 +33,16 @@ void PSocketServer::start()
     
     addr.Service(3000);
     socketServer = new wxSocketServer(addr);
+    addr.Hostname(::wxGetFullHostName());
     if (! socketServer->Ok())
     {
         this->stop();
-        wxLogMessage("Could not listen at the specified port !");
+        wxLogMessage("Could not listen at the specified ip or port:%s:%u",addr.IPAddress(),addr.Service());
         return;
     }
     else
     {
-         wxLogMessage("Log Server was listen");
+        wxLogMessage("Log Server was listen:%s:%u",addr.IPAddress(),addr.Service());
     }
     socketServer->SetEventHandler(*this, SERVER_ID);
     socketServer->SetNotify(wxSOCKET_CONNECTION_FLAG);
@@ -51,6 +52,9 @@ void PSocketServer::start()
 void PSocketServer::OnServerEvent(wxSocketEvent &event)
 {
     wxSocketBase *sock = socketServer->Accept(false);
+    wxIPV4address addrReal;
+    sock->GetLocal(addrReal);
+    wxLogMessage("Log Server was listen:%s:%u",addrReal.IPAddress(),addrReal.Service());
     sock->SetEventHandler(*this,SOCKET_ID);
     sock->SetNotify(wxSOCKET_INPUT_FLAG|wxSOCKET_LOST_FLAG);
     sock->Notify(true);
