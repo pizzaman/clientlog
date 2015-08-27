@@ -13,6 +13,7 @@
 		9633E6CE1B5F4C2C00727CF5 /* config in Resources */ = {isa = PBXBuildFile; fileRef = 96D268961B2990E0006B11B8 /* config */; };
 		96589E191B6CA07E0022A7C2 /* ConfigFileUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96589E151B6CA07E0022A7C2 /* ConfigFileUtil.cpp */; };
 		96589E1A1B6CA07E0022A7C2 /* PSocketServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96589E171B6CA07E0022A7C2 /* PSocketServer.cpp */; };
+		969659811B7102CC00847CAD /* PortConfigDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9696597F1B7102CC00847CAD /* PortConfigDialog.cpp */; };
 		96F703CF1AEDF39C0075AA76 /* libwx_osx_cocoa.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F703CA1AEDF2710075AA76 /* libwx_osx_cocoa.dylib */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		96589E161B6CA07E0022A7C2 /* ConfigFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigFileUtil.h; sourceTree = "<group>"; };
 		96589E171B6CA07E0022A7C2 /* PSocketServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PSocketServer.cpp; sourceTree = "<group>"; };
 		96589E181B6CA07E0022A7C2 /* PSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSocketServer.h; sourceTree = "<group>"; };
+		9696597F1B7102CC00847CAD /* PortConfigDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PortConfigDialog.cpp; sourceTree = "<group>"; };
+		969659801B7102CC00847CAD /* PortConfigDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortConfigDialog.h; sourceTree = "<group>"; };
 		96C9164B1A2E1134006F2C3A /* ClientLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D268961B2990E0006B11B8 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = config; path = Resource/config; sourceTree = "<group>"; };
 		96E11F641A45CAC700804E11 /* osx_cocoa-unicode-static-3.0 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "osx_cocoa-unicode-static-3.0"; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				96589E161B6CA07E0022A7C2 /* ConfigFileUtil.h */,
 				96589E171B6CA07E0022A7C2 /* PSocketServer.cpp */,
 				96589E181B6CA07E0022A7C2 /* PSocketServer.h */,
+				9696597F1B7102CC00847CAD /* PortConfigDialog.cpp */,
+				969659801B7102CC00847CAD /* PortConfigDialog.h */,
 			);
 			name = util;
 			path = source/util;
@@ -295,6 +300,7 @@
 			files = (
 				9633E6C41B5E7DF900727CF5 /* MainFrame.cpp in Sources */,
 				96589E1A1B6CA07E0022A7C2 /* PSocketServer.cpp in Sources */,
+				969659811B7102CC00847CAD /* PortConfigDialog.cpp in Sources */,
 				9633E6C21B5E7DF900727CF5 /* CodeEditor.cpp in Sources */,
 				9633E6C51B5E7DF900727CF5 /* minimal.cpp in Sources */,
 				96589E191B6CA07E0022A7C2 /* ConfigFileUtil.cpp in Sources */,

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 pizzaman. All rights reserved.
 //
 
+#include "wx/aui/auibook.h"
 #include "MainFrame.h"
 #include "CodeEditor.h"
 #include "util/ConfigFileUtil.h"
@@ -27,6 +28,7 @@ END_EVENT_TABLE()
 MainFrame::MainFrame(const wxString &title,wxSize &size)
 : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition,size)
 {
+    auiMgr.SetManagedWindow(this);
     createMenu();
     ConfigFileUtil::getInstance();
 //    FileUtil::readIniFile(wxT("Resources/config/init.ini"));
@@ -36,7 +38,13 @@ MainFrame::MainFrame(const wxString &title,wxSize &size)
 //    CodeEditor *code = new CodeEditor(this,1);
 //    code->initComponent();
     wxSize sz = wxSize(800, 600);
-    pss = new PSocketServer(this,1,wxDefaultPosition,sz);
+    wxAuiNotebook* ctrl = new wxAuiNotebook(this, wxID_ANY,
+                                            wxDefaultPosition,
+                                           sz);
+    pss = new PSocketServer(ctrl,1,wxDefaultPosition,sz);
+    ctrl->AddPage(pss, wxT("Error Message"));
+    
+    auiMgr.Update();
 }
 
 void MainFrame::createMenu()

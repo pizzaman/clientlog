@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "util/PSocketServer.h"
+#include <wx/aui/framemanager.h>
 
 class MainFrame:public wxFrame
 {
@@ -22,6 +23,7 @@ private:
     DECLARE_EVENT_TABLE();
     void createMenu();
     PSocketServer *pss;
+    wxAuiManager auiMgr;
 };
 
 #endif /* defined(__testWxwdigets__MainFrame__) */

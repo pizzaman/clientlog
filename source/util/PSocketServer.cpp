@@ -8,11 +8,14 @@
 
 #include "PSocketServer.h"
 #include "wx/sckaddr.h"
+#include "wx/log.h"
+#include "wx/socket.h"
 
 
 wxBEGIN_EVENT_TABLE(PSocketServer, wxWindow)
 EVT_SOCKET(SERVER_ID,  PSocketServer::OnServerEvent)
 EVT_SOCKET(SOCKET_ID,  PSocketServer::OnSocketEvent)
+EVT_SIZE(PSocketServer::OnSize)
 wxEND_EVENT_TABLE()
 
 
@@ -52,9 +55,7 @@ void PSocketServer::start()
 void PSocketServer::OnServerEvent(wxSocketEvent &event)
 {
     wxSocketBase *sock = socketServer->Accept(false);
-    wxIPV4address addrReal;
-    sock->GetLocal(addrReal);
-    wxLogMessage("Log Server was listen:%s:%u",addrReal.IPAddress(),addrReal.Service());
+    this->checkSocketStatus(sock);
     sock->SetEventHandler(*this,SOCKET_ID);
     sock->SetNotify(wxSOCKET_INPUT_FLAG|wxSOCKET_LOST_FLAG);
     sock->Notify(true);
@@ -68,12 +69,12 @@ void PSocketServer::OnSocketEvent(wxSocketEvent &event)
         case wxSOCKET_INPUT:
             sock->Read(buf.data(), 32*1024);
             sock->Write(buf, 32*1024);
-            wxLogMessage(buf);
             text->AppendText(buf);
             text->AppendText("\n");
 //            sock->Destroy();
             break;
         case wxSOCKET_LOST:
+            this->checkSocketStatus(sock);
             wxLogMessage("socket lost!");
             sock->Destroy();
             break;
@@ -83,11 +84,39 @@ void PSocketServer::OnSocketEvent(wxSocketEvent &event)
     }
 }
 
+void PSocketServer::checkSocketStatus(wxSocketBase *sock)
+{
+    if (sock)
+    {
+        wxIPV4address addr;
+        if ( !sock->GetPeer(addr) )
+        {
+            wxLogMessage("New connection from unknown client accepted.");
+        }
+        else
+        {
+            wxLogMessage("client connection from %s:%u ",
+                         addr.IPAddress(), addr.Service());
+        }
+    }
+    else
+    {
+        wxLogMessage("Error: couldn't accept a new connection");
+        return;
+    }
+}
+
 void PSocketServer::stop()
 {
     if (socketServer != NULL) {
         socketServer->Destroy();
         socketServer = NULL;
     }
+}
+
+void PSocketServer::OnSize(wxSizeEvent &event)
+{
+    wxSize size = GetClientSize();
+    text->SetSize(0, 0, size.GetWidth(), size.GetHeight());
 }
 

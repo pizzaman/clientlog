@@ -35,8 +35,10 @@ private:
     DECLARE_EVENT_TABLE();
     wxSocketServer *socketServer;
     wxTextCtrl *text;
+    void checkSocketStatus(wxSocketBase *sock);
     void OnServerEvent(wxSocketEvent& event);
     void OnSocketEvent(wxSocketEvent& event);
+    void OnSize(wxSizeEvent& event);
 };
 
 #endif /* defined(__testWxwdigets__PSocketServer__) */
